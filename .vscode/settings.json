@@ -1,0 +1,7 @@
+{
+    "python.formatting.provider": "autopep8",
+    "python.formatting.autopep8Path": "/home/israel/.local/bin/autopep8",
+    "editor.formatOnSave": true,
+    "python.pythonPath": "/home/israel/virtual/bin/python3",
+    "editor.defaultFormatter": "KevinRose.vsc-python-indent",
+}

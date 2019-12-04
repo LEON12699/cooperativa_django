@@ -1,0 +1,49 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">	
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+	
+    $('#table').DataTable();
+})
+</script>
+
+<h1 align="center"> Lista de Clientes </h1>
+<a href="crear_cliente" class='btn btn-block btn-outline-dark'> <strong> Crear Cliente </strong></a>
+<br/>
+{% include 'utiles/mensajes.html'%}
+
+<br/>
+<form class="container" >
+	
+	<table id="table" class="table table-bordered">
+		<thead class="thead-dark">
+				<th> Cédula </th>
+				<th> Apellidos </th>
+				<th> Nombres </th>
+				<th> Celular </th>
+				<th>Acciones</th>	
+		</thead>
+		<tbody>
+			{% for c in lista %}
+			<tr>
+				<td><a href="modificar?cedula={{c.cedula}}">{{c.cedula}}</a></td>
+				<td>{{c.apellido}}</td>
+				<td>{{c.nombre}}</td>
+				<td>{{c.celular}}</td>
+				<td><a class='btn btn-outline-success' href="cuenta?cedula={{c.cedula}}" rel="noopener noreferrer" >Mis cuentas</a>
+					<hr><a href="borrar?cedula={{c.cedula}}" class="btn btn-sm btn-outline-danger" >Borrar <span class="badge badge-pill badge-danger">x</span></a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</form>

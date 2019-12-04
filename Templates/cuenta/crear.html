@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">	
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style>
+    input,
+    select,
+    textarea {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    p {
+        margin-bottom: 1rem;
+    }
+    
+    label {
+        color: rgb(25, 21, 37);
+    }
+</style>
+
+    <title>Document</title>
+</head>
+<body>
+<form class="container" method ='POST'>{% csrf_token %}
+							
+
+<a href="javascript:history.back()" class="badge badge-danger">
+        <-- volver</a>
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class=" bg-transparent" id="headingOne">
+                        <h3 class="mb-0">
+                            <button class=" btn-block btn-dark" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         Crear Cuenta 
+        </button>
+                        </h3>
+                        <small><p><label > mi identificacion:</label> {{dni}}</p></small>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            {{f.as_p}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div><button class=" btn-lg btn-outline-primary" style="width:100%" type="submit"> Crear</button>
+
+            </div>
+
+	
+</form>
+</body>
+</html>

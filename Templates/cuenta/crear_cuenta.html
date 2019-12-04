@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">	
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <title>Cuentas</title>
+</head>
+<body>
+{% load humanize %}
+<script>
+$(document).ready(function() {
+    $('#table').DataTable();
+} );
+</script>
+<H1 align="center">   MIS CUENTAS </H1>
+  <a href="/cliente" class="badge badge-danger">
+        <-- volver</a>
+<label class="alert"> Crear Nueva Cuenta <a href="crearCuenta?cedula={{dni}}" class=" badge badge-dark" > + </a></label>
+
+<table id="table" class='table table-table-bordered'>
+{% include 'utiles/toast.html' %}
+    <thead class='thead-light'>
+    <tr>
+        <th>INDEX</th>
+        <th>Numero</th>
+        <th>Tipo</th>
+        <th>Fecha Apertura</th>
+        <th>saldo</th>
+        <th>Estado</th>
+        <th>Desposito</th>
+        <th>Retiro</th>
+    </tr>
+    </thead>
+    {% for cuenta in lista %}
+        <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{cuenta.numero}}</td>
+        <td>{{cuenta.tipoCuenta}}</td>
+        <td>{{cuenta.fechaApertura}}</td>
+        <td>{{cuenta.saldo}}</td>
+        {% if cuenta.estado%}
+        <td>Activa</td>
+        {% else  %}
+        <td>Inactiva</td>
+        {% endif %}
+            <td><a href='{% url "deposito" numero=cuenta.numero %}' class="btn btn-info">Deposito</a></td>
+    <td><a  href='{% url "retiro" numero=cuenta.numero %}' class="btn btn-success" >Retiro</a></td>
+        </tr>
+    {% endfor %}
+
+</table>
+</body>
+</html>
